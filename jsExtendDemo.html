@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -50,9 +50,8 @@ Person.prototype.getAge = function(){
 	return this.age;
 }
 
-//(function($){})(jQuery);
 var p = new Person({name:"asdasd",age:454});
-alert(p.name+"|"+p.getAge());
+//alert(p.name+"|"+p.getAge());
 
 
 var name = "The Window";
@@ -69,7 +68,7 @@ var name = "The Window";
 
 　　};
 
-　　alert(object.getNameFunc()());
+　　//alert(object.getNameFunc()());
 
 var name = "The Window";
 
@@ -86,8 +85,24 @@ var name = "The Window";
 
 　　};
 
-　　alert(object.getNameFunc()());
+　　//alert(object.getNameFunc()());
 
+var foo = (function(){
+	var name="a";
+	return {
+		getName:function(){
+			return name;
+		},
+		setNew:function(newName){
+			name = newName;
+		}
+	};
+})();
+
+alert(foo.name);
+alert(foo.getName());
+foo.setNew('kkk');
+alert(foo.getName());
 </script>
  
 </body>
