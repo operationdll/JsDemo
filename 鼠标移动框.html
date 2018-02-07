@@ -1,0 +1,56 @@
+<script type="text/javascript">
+ 
+//在鼠标显示一个层，该层的内空为div2的内容 
+function showTip2()
+{ 
+  var ipadTwo = document.getElementById('ipadTwo'); //将要弹出的层 
+  ipadTwo.style.display="block"; //div2初始状态是不可见的，设置可为可见 
+  //window.event代表事件状态，如事件发生的元素，键盘状态，鼠标位置和鼠标按钮状. 
+  //clientX是鼠标指针位置相对于窗口客户区域的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条。 
+  ipadTwo.style.left=event.clientX+15; //鼠标目前在X轴上的位置，加10是为了向右边移动10个px方便看到内容 
+  ipadTwo.style.top=parseInt(event.y)+5+document.body.scrollTop; 
+  ipadTwo.style.position="absolute"; //必须指定这个属性，否则div1层无法跟着鼠标动 
+}
+ 
+//关闭层div2的显示 
+function closeTip2()
+{ 
+  var ipadTwo = document.getElementById('ipadTwo'); 
+  ipadTwo.style.display="none"; 
+} 
+</script> 
+
+<style type="text/css">
+#ipadTwo {
+	width: 380px;
+	height: 190px;
+	background: #FFF;
+	border: dashed 1px #dddddd;
+	opacity: 0.8; //透明度
+	-moz-opacity: 0.8;
+	filter: alpha(opacity = 80);
+	padding: 5px;
+}
+</style>
+
+<div align="center" onMouseMove="showTip2()" onMouseOut="closeTip2()">
+鼠标过来
+</div>
+
+<div id="ipadTwo" style="display:none;"> 
+	<ul>
+    	<li>iPad2，价值4800元：</li>
+        <li>屏幕尺寸：9.7英寸 电容式触摸屏</li>
+        <li>操作系统：iOS 4.3</li>
+        <li>处理器：A5 双核，1GHz</li>
+        <li>系统内存：512MB</li>
+        <li>存储容量：16GB</li>
+        <li>屏幕分辨率：1024×768 3G</li>
+        <li>WiFi功能：WIFI无线上网，支持802.11b（网络：不支持3G网络）</li>
+        <li>摄像头：双摄像头（前置：30万像素）</li>
+        <li>产品重量：601g</li>
+        <li>GPS导航：内置GPS导航</li>
+        <li>续航时间：10小时左右，具体时间视使用</li>
+        <li>注：以上参数以具体实物为准</li>
+	</ul>
+</div>
