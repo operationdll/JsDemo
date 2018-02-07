@@ -87,7 +87,8 @@ var name = "The Window";
 
 　　//alert(object.getNameFunc()());
 
-var foo = (function(){
+var foo = (function($){
+    alert($.fn.jquery);
 	var name="a";
 	return {
 		getName:function(){
@@ -97,7 +98,7 @@ var foo = (function(){
 			name = newName;
 		}
 	};
-})();
+})(jQuery);
 
 alert(foo.name);
 alert(foo.getName());
