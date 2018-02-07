@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.extend demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="log"></div>
+ 
+<script>
+var empty = {name:"T"};
+var defaults = { validate: false, limit: 5, name: "foo" };
+var options = { validate: true, name: "bar" };
+// Assuming JSON.stringify - not available in IE<8
+$( "#log" ).append( "<div><b>--Before value--</div>" );
+$( "#log" ).append( "<div><b>empty -- </b>" + JSON.stringify( empty ) + "</div>" );
+$( "#log" ).append( "<div><b>defaults -- </b>" + JSON.stringify( defaults ) + "</div>" );
+$( "#log" ).append( "<div><b>options -- </b>" + JSON.stringify( options ) + "</div>" );
+// Merge defaults and options, without modifying defaults
+var settings = $.extend(defaults, options );
+// Assuming JSON.stringify - not available in IE<8
+$( "#log" ).append( "<div><b>$.extend(defaults, options )--After value--</div>" );
+$( "#log" ).append( "<div><b>empty -- </b>" + JSON.stringify( empty ) + "</div>" );
+$( "#log" ).append( "<div><b>defaults -- </b>" + JSON.stringify( defaults ) + "</div>" );
+$( "#log" ).append( "<div><b>options -- </b>" + JSON.stringify( options ) + "</div>" );
+$( "#log" ).append( "<div><b>settings -- </b>" + JSON.stringify( settings ) + "</div>" );
+// Merge defaults and options, without modifying defaults
+var settings = $.extend( empty, defaults, options );
+// Assuming JSON.stringify - not available in IE<8
+$( "#log" ).append( "<div><b>$.extend( empty, defaults, options )--After value--</div>" );
+$( "#log" ).append( "<div><b>empty -- </b>" + JSON.stringify( empty ) + "</div>" );
+$( "#log" ).append( "<div><b>defaults -- </b>" + JSON.stringify( defaults ) + "</div>" );
+$( "#log" ).append( "<div><b>options -- </b>" + JSON.stringify( options ) + "</div>" );
+$( "#log" ).append( "<div><b>settings -- </b>" + JSON.stringify( settings ) + "</div>" );
+
+
+function Person(options){
+	var options = $.extend({name:'D',age:1},options);
+	this.name = options.name;
+	this.age = options.age;
+}
+
+Person.prototype.getName = function(){
+	return this.name;
+}
+
+Person.prototype.getAge = function(){
+	return this.age;
+}
+
+//(function($){})(jQuery);
+var p = new Person({name:"asdasd",age:454});
+alert(p.name+"|"+p.getAge());
+
+
+var name = "The Window";
+
+　　var object = {
+　　　　name : "My Object",
+
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+
+var name = "The Window";
+
+　　var object = {
+　　　　name : "My Object",
+
+　　　　getNameFunc : function(){
+　　　　　　var that = this;
+　　　　　　return function(){
+　　　　　　　　return that.name;
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+
+</script>
+ 
+</body>
+</html>
